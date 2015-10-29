@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scl", "Scl\Scl.csproj", "{F51F36CD-68BA-4E86-BAC4-A37F74557C14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scl.Test", "Scl.Test\Scl.Test.csproj", "{DC3FBD3F-2074-483B-9C4A-4053BD7F2EFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F51F36CD-68BA-4E86-BAC4-A37F74557C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F51F36CD-68BA-4E86-BAC4-A37F74557C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F51F36CD-68BA-4E86-BAC4-A37F74557C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F51F36CD-68BA-4E86-BAC4-A37F74557C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC3FBD3F-2074-483B-9C4A-4053BD7F2EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC3FBD3F-2074-483B-9C4A-4053BD7F2EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC3FBD3F-2074-483B-9C4A-4053BD7F2EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC3FBD3F-2074-483B-9C4A-4053BD7F2EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
