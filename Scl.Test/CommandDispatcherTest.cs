@@ -17,10 +17,26 @@ namespace Scl.Test
             var retriever = new StubUserRetriever(alice);
 
             var spy = new PrintPostsSpy();
-            var dispatcher = new CommandDispatcher(retriever, spy);
+            var pSpy = new PublishPostSpy();
+            var dispatcher = new CommandDispatcher(retriever, spy, pSpy);
             dispatcher.Run(new[] { "Alice" });
 
             Assert.Equal(alice, spy.LastCalledWith);
+        }
+
+        [Fact]
+        public void UsernameArrowMessagePublishesMessage()
+        {
+            var alice = new User("Alice");
+            var retriever = new StubUserRetriever(alice);
+
+            var spy = new PrintPostsSpy();
+            var pSpy = new PublishPostSpy();
+            var dispatcher = new CommandDispatcher(retriever, spy, pSpy);
+            dispatcher.Run(new[] { "Alice", "->", "Hello,", "World!" });
+
+            Assert.Equal(alice, pSpy.UserCalledWith);
+            Assert.Equal("Hello, World!", pSpy.MessageCalledWith);
         }
     }
 }

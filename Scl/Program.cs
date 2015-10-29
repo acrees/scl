@@ -21,7 +21,9 @@ namespace Scl
             var formatter = new PostFormatter();
             var printer = new PrintPosts(formatter, output);
 
-            var dispatcher = new CommandDispatcher(getUser, printer);
+            var publisher = new PublishPost();
+
+            var dispatcher = new CommandDispatcher(getUser, printer, publisher);
 
             while(true)
             {

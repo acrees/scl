@@ -62,10 +62,12 @@
     <Compile Include="CommandDispatcherTest.cs" />
     <Compile Include="Commands\CreateOrRetrieveUserByNameTest.cs" />
     <Compile Include="Commands\PrintPostsTest.cs" />
+    <Compile Include="Commands\PublishPostTest.cs" />
     <Compile Include="Doubles\OutputSpy.cs" />
     <Compile Include="Doubles\PostFormatterDummy.cs" />
     <Compile Include="Doubles\PostFormatterSpy.cs" />
     <Compile Include="Doubles\PrintPostsSpy.cs" />
+    <Compile Include="Doubles\PublishPostSpy.cs" />
     <Compile Include="Doubles\StubUserRetriever.cs" />
     <Compile Include="Doubles\UserRepositorySpy.cs" />
     <Compile Include="IO\PostFormatterTest.cs" />

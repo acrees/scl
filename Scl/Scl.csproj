@@ -46,9 +46,11 @@
     <Compile Include="CommandDispatcher.cs" />
     <Compile Include="Commands\CreateOrRetrieveUserByName.cs" />
     <Compile Include="Commands\PrintPosts.cs" />
+    <Compile Include="Commands\PublishPost.cs" />
     <Compile Include="Contracts\ICreateOrRetrieveUserByName.cs" />
     <Compile Include="Contracts\IOutput.cs" />
     <Compile Include="Contracts\IPostFormatter.cs" />
+    <Compile Include="Contracts\IPublishPost.cs" />
     <Compile Include="Contracts\IUserRepository.cs" />
     <Compile Include="Contracts\IPrintPosts.cs" />
     <Compile Include="IO\PostFormatter.cs" />

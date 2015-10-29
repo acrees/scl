@@ -14,5 +14,19 @@ namespace Scl
         {
             Message = message;
         }
+
+        public override bool Equals(object obj)
+        {
+            var otherPost = obj as Post;
+            if (otherPost == null) return base.Equals(obj);
+            return otherPost.Message == Message;
+        }
+
+        public override int GetHashCode()
+        {
+            var hash = 13;
+            hash = (hash * 7) + Message.GetHashCode();
+            return hash;
+        }
     }
 }
