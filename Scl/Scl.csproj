@@ -45,9 +45,14 @@
   <ItemGroup>
     <Compile Include="CommandDispatcher.cs" />
     <Compile Include="Commands\CreateOrRetrieveUserByName.cs" />
+    <Compile Include="Commands\PrintPosts.cs" />
     <Compile Include="Contracts\ICreateOrRetrieveUserByName.cs" />
+    <Compile Include="Contracts\IOutput.cs" />
+    <Compile Include="Contracts\IPostFormatter.cs" />
     <Compile Include="Contracts\IUserRepository.cs" />
     <Compile Include="Contracts\IPrintPosts.cs" />
+    <Compile Include="IO\PostFormatter.cs" />
+    <Compile Include="IO\StandardOutput.cs" />
     <Compile Include="Post.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,7 +62,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Posts\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

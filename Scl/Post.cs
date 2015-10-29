@@ -8,8 +8,11 @@ namespace Scl
 {
     public class Post
     {
+        public string Message { get; private set; }
+
         public Post(string message)
         {
+            Message = message;
         }
     }
 }

@@ -61,9 +61,14 @@
   <ItemGroup>
     <Compile Include="CommandDispatcherTest.cs" />
     <Compile Include="Commands\CreateOrRetrieveUserByNameTest.cs" />
+    <Compile Include="Commands\PrintPostsTest.cs" />
+    <Compile Include="Doubles\OutputSpy.cs" />
+    <Compile Include="Doubles\PostFormatterDummy.cs" />
+    <Compile Include="Doubles\PostFormatterSpy.cs" />
     <Compile Include="Doubles\PrintPostsSpy.cs" />
     <Compile Include="Doubles\StubUserRetriever.cs" />
     <Compile Include="Doubles\UserRepositorySpy.cs" />
+    <Compile Include="IO\PostFormatterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Persistance\UserRepositoryTest.cs" />
     <Compile Include="UserTest.cs" />
@@ -80,6 +85,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
