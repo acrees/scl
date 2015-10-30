@@ -26,24 +26,44 @@ namespace Scl
         public void Run(string[] input)
         {
             var user = _getUser.Execute(input[0]);
-            if (input.Length == 1)
+            if (IsPrintPostsCommand(input))
             {
                 _printPosts.Execute(user);
             }
-            else if (input[1] == "->")
+            else if (IsPublishCommand(input))
             {
                 var message = String.Join(" ", input.Skip(2));
                 _publish.Execute(user, message);
             }
-            else if (input[1] == "follows")
+            else if (IsFollowCommand(input))
             {
                 var userToFollow = _getUser.Execute(input[2]);
                 _follow.Execute(user, userToFollow);
             }
-            else if (input[1] == "wall")
+            else if (IsPrintWallCommand(input))
             {
                 _wall.Execute(user);
             }
+        }
+
+        private bool IsPrintPostsCommand(string[] input)
+        {
+            return input.Length == 1;
+        }
+
+        private bool IsPublishCommand(string[] input)
+        {
+            return input[1] == "->";
+        }
+
+        private bool IsFollowCommand(string[] input)
+        {
+            return input[1] == "follows";
+        }
+
+        private bool IsPrintWallCommand(string[] input)
+        {
+            return input[1] == "wall";
         }
 
         private ICreateOrRetrieveUserByName _getUser;
