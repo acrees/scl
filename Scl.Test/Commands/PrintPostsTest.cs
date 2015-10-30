@@ -17,8 +17,8 @@ namespace Scl.Test.Commands
             var user = new User("Alice");
             var posts = new List<Post>
             {
-                new Post(user, "Hello!"),
-                new Post(user, "World!")
+                new Post(user, "Hello!", DateTime.Now),
+                new Post(user, "World!", DateTime.Now)
             };
             user.Publish(posts[0]);
             user.Publish(posts[1]);
@@ -35,7 +35,7 @@ namespace Scl.Test.Commands
         public void PrintsTheFormattedStrings()
         {
             var user = new User("Alice");
-            user.Publish(new Post(user, ""));
+            user.Publish(new Post(user, "", DateTime.Now));
             var spy = new OutputSpy();
             var command = new PrintPosts(new PostFormatterDummy("Hello, World!"), spy);
 

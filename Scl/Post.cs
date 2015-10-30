@@ -10,19 +10,22 @@ namespace Scl
     {
         public string Message { get; private set; }
         public User User { get; private set; }
+        public DateTime Timestamp { get; private set; }
 
-        public Post(User user, string message)
+        public Post(User user, string message, DateTime timestamp)
         {
             User = user;
             Message = message;
+            Timestamp = timestamp;
         }
 
         public override bool Equals(object obj)
         {
             var otherPost = obj as Post;
             if (otherPost == null) return base.Equals(obj);
-            return otherPost.Message == Message
-                && User == otherPost.User;
+            return Message == otherPost.Message
+                && User == otherPost.User
+                && Timestamp == otherPost.Timestamp;
         }
 
         public override int GetHashCode()
@@ -30,6 +33,7 @@ namespace Scl
             var hash = 13;
             hash = (hash * 7) + Message.GetHashCode();
             hash = (hash * 7) + User.GetHashCode();
+            hash = (hash * 7) + Timestamp.GetHashCode();
             return hash;
         }
     }

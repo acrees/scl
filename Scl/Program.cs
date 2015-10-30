@@ -18,22 +18,22 @@ namespace Scl
             var getUser = new CreateOrRetrieveUserByName(repo);
 
             var output = new StandardOutput();
-            var formatter = new PostFormatter();
-            var printer = new PrintPosts(formatter, output);
-            var printWall = new PrintWall(formatter, output);
+            //var formatter = new PostFormatter();
+            //var printer = new PrintPosts(formatter, output);
+            //var printWall = new PrintWall(formatter, output);
 
-            var publisher = new PublishPost();
-            var follow = new FollowUser();
+            //var publisher = new PublishPost();
+            //var follow = new FollowUser();
 
-            var dispatcher = new CommandDispatcher(
-                getUser, printer, publisher, follow, printWall);
+            //var dispatcher = new CommandDispatcher(
+            //    getUser, printer, publisher, follow, printWall);
 
-            while(true)
-            {
-                Console.Write("> ");
-                var input = Console.ReadLine();
-                dispatcher.Run(input.Split(' '));
-            }
+            //while(true)
+            //{
+            //    Console.Write("> ");
+            //    var input = Console.ReadLine();
+            //    dispatcher.Run(input.Split(' '));
+            //}
         }
     }
 }

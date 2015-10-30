@@ -1,4 +1,5 @@
 ﻿using Scl.Commands;
+using Scl.Test.Doubles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,15 @@ namespace Scl.Test.Commands
         [Fact]
         public void CreatesAPostWithTheMessage()
         {
+            var time = DateTime.Now;
+            var timeProvider = new CurrentTimeProviderDummy(time);
+
             var user = new User("Alice");
-            var command = new PublishPost();
+            var command = new PublishPost(timeProvider);
 
             command.Execute(user, "Hello, World!");
 
-            Assert.Equal(new[] { new Post(user, "Hello, World!") }, user.Posts);
+            Assert.Equal(new[] { new Post(user, "Hello, World!", time) }, user.Posts);
         }
     }
 }

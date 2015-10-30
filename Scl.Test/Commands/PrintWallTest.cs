@@ -17,7 +17,7 @@ namespace Scl.Test.Commands
         {
             var alice = new User("Alice");
             var bob = new User("Bob");
-            var post = new Post(bob, "Hello, World!");
+            var post = new Post(bob, "Hello, World!", DateTime.Now);
 
             alice.Follow(bob);
             bob.Publish(post);
@@ -36,7 +36,7 @@ namespace Scl.Test.Commands
         {
             var alice = new User("Alice");
             var bob = new User("Bob");
-            var post = new Post(bob, "Hello, World!");
+            var post = new Post(bob, "Hello, World!", DateTime.Now);
 
             alice.Follow(bob);
             bob.Publish(post);

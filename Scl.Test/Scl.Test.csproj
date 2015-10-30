@@ -65,6 +65,7 @@
     <Compile Include="Commands\PrintPostsTest.cs" />
     <Compile Include="Commands\PrintWallTest.cs" />
     <Compile Include="Commands\PublishPostTest.cs" />
+    <Compile Include="Doubles\CurrentTimeProviderDummy.cs" />
     <Compile Include="Doubles\FollowUserSpy.cs" />
     <Compile Include="Doubles\OutputSpy.cs" />
     <Compile Include="Doubles\PostFormatterDummy.cs" />
