@@ -21,7 +21,8 @@ namespace Scl.Test
             var spy = new PrintPostsSpy();
             var pSpy = new PublishPostSpy();
             var fSpy = new FollowUserSpy();
-            var dispatcher = new CommandDispatcher(retriever, spy, pSpy, fSpy);
+            var wSpy = new PrintWallSpy();
+            var dispatcher = new CommandDispatcher(retriever, spy, pSpy, fSpy, wSpy);
             dispatcher.Run(new[] { "Alice" });
 
             Assert.Equal(alice, spy.LastCalledWith);
@@ -36,7 +37,8 @@ namespace Scl.Test
             var spy = new PrintPostsSpy();
             var pSpy = new PublishPostSpy();
             var fSpy = new FollowUserSpy();
-            var dispatcher = new CommandDispatcher(retriever, spy, pSpy, fSpy);
+            var wSpy = new PrintWallSpy();
+            var dispatcher = new CommandDispatcher(retriever, spy, pSpy, fSpy, wSpy);
             dispatcher.Run(new[] { "Alice", "->", "Hello,", "World!" });
 
             Assert.Equal(alice, pSpy.UserCalledWith);
@@ -56,11 +58,28 @@ namespace Scl.Test
             var spy = new PrintPostsSpy();
             var pSpy = new PublishPostSpy();
             var fSpy = new FollowUserSpy();
-            var dispatcher = new CommandDispatcher(retriever, spy, pSpy, fSpy);
+            var wSpy = new PrintWallSpy();
+            var dispatcher = new CommandDispatcher(retriever, spy, pSpy, fSpy, wSpy);
             dispatcher.Run(new[] { "Alice", "follows", "Bob" });
 
             Assert.Equal(alice, fSpy.UserCalledWith);
             Assert.Equal(bob, fSpy.UserToFollowCalledWith);
+        }
+
+        [Fact]
+        public void UsernameWallPrintsWall()
+        {
+            var alice = new User("Alice");
+            var retriever = new StubUserRetriever(alice);
+
+            var spy = new PrintPostsSpy();
+            var pSpy = new PublishPostSpy();
+            var fSpy = new FollowUserSpy();
+            var wSpy = new PrintWallSpy();
+            var dispatcher = new CommandDispatcher(retriever, spy, pSpy, fSpy, wSpy);
+            dispatcher.Run(new[] { "Alice", "wall" });
+
+            Assert.Equal(alice, wSpy.LastCalledWith);
         }
     }
 }

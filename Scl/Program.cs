@@ -20,11 +20,13 @@ namespace Scl
             var output = new StandardOutput();
             var formatter = new PostFormatter();
             var printer = new PrintPosts(formatter, output);
+            var printWall = new PrintWall(formatter, output);
 
             var publisher = new PublishPost();
             var follow = new FollowUser();
 
-            var dispatcher = new CommandDispatcher(getUser, printer, publisher, follow);
+            var dispatcher = new CommandDispatcher(
+                getUser, printer, publisher, follow, printWall);
 
             while(true)
             {

@@ -13,12 +13,14 @@ namespace Scl
             ICreateOrRetrieveUserByName userRetriever,
             IPrintPosts print,
             IPublishPost publish,
-            IFollowUser follow)
+            IFollowUser follow,
+            IPrintWall wall)
         {
             _getUser = userRetriever;
             _printPosts = print;
             _publish = publish;
             _follow = follow;
+            _wall = wall;
         }
 
         public void Run(string[] input)
@@ -38,11 +40,16 @@ namespace Scl
                 var userToFollow = _getUser.Execute(input[2]);
                 _follow.Execute(user, userToFollow);
             }
+            else if (input[1] == "wall")
+            {
+                _wall.Execute(user);
+            }
         }
 
         private ICreateOrRetrieveUserByName _getUser;
         private IPrintPosts _printPosts;
         private IPublishPost _publish;
         private IFollowUser _follow;
+        private IPrintWall _wall;
     }
 }

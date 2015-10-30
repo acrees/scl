@@ -37,7 +37,7 @@ namespace Scl.Test.Commands
 
             command.Execute(user);
 
-            Assert.Equal("Hello, World!", spy.LastCalledWith);
+            Assert.Equal(new[] { "Hello, World!" }, spy.CalledWith);
         }
     }
 }

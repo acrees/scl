@@ -47,11 +47,13 @@
     <Compile Include="Commands\CreateOrRetrieveUserByName.cs" />
     <Compile Include="Commands\FollowUser.cs" />
     <Compile Include="Commands\PrintPosts.cs" />
+    <Compile Include="Commands\PrintWall.cs" />
     <Compile Include="Commands\PublishPost.cs" />
     <Compile Include="Contracts\ICreateOrRetrieveUserByName.cs" />
     <Compile Include="Contracts\IFollowUser.cs" />
     <Compile Include="Contracts\IOutput.cs" />
     <Compile Include="Contracts\IPostFormatter.cs" />
+    <Compile Include="Contracts\IPrintWall.cs" />
     <Compile Include="Contracts\IPublishPost.cs" />
     <Compile Include="Contracts\IUserRepository.cs" />
     <Compile Include="Contracts\IPrintPosts.cs" />

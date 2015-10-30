@@ -9,11 +9,16 @@ namespace Scl.Test.Doubles
 {
     public class OutputSpy : IOutput
     {
-        public string LastCalledWith { get; private set; }
+        public List<string> CalledWith { get; private set; }
+
+        public OutputSpy()
+        {
+            CalledWith = new List<string>();
+        }
 
         public void PrintLine(string output)
         {
-            LastCalledWith = output;
+            CalledWith.Add(output);
         }
     }
 }
