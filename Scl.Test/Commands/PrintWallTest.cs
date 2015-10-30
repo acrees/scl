@@ -49,5 +49,36 @@ namespace Scl.Test.Commands
 
             Assert.Equal(new[] { "Hello!" }, outputSpy.CalledWith);
         }
+
+        [Fact]
+        public void OutputsPostsInDescendingTimestampOrder()
+        {
+            var alice = new User("Alice");
+            var bob = new User("Bob");
+            var charlie = new User("Charlie");
+
+            alice.Follow(bob);
+            alice.Follow(charlie);
+
+            var posts = new[]
+            {
+                new Post(bob, "Hello, world!", DateTime.MinValue),
+                new Post(charlie, "Bonjour la monde!", DateTime.MinValue.AddYears(1)),
+                new Post(bob, "Sekai, konnichiwa!", DateTime.MinValue.AddYears(2))
+            };
+
+            bob.Publish(posts[0]);
+            bob.Publish(posts[2]);
+            charlie.Publish(posts[1]);
+
+            var outputSpy = new OutputSpy();
+            var postFormatter = new PostFormatterDummy(p => p.Message);
+            var command = new PrintWall(postFormatter, outputSpy);
+            command.Execute(alice);
+
+            Assert.Equal(
+                new[] { "Sekai, konnichiwa!", "Bonjour la monde!", "Hello, world!" },
+                outputSpy.CalledWith);
+        }
     }
 }

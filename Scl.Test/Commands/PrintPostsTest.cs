@@ -12,23 +12,18 @@ namespace Scl.Test.Commands
     public class PrintPostsTest
     {
         [Fact]
-        public void CallsThePrintFormatterForEachPost()
+        public void CallsThePrintFormatter()
         {
             var user = new User("Alice");
-            var posts = new List<Post>
-            {
-                new Post(user, "Hello!", DateTime.Now),
-                new Post(user, "World!", DateTime.Now)
-            };
-            user.Publish(posts[0]);
-            user.Publish(posts[1]);
+            var post = new Post(user, "Hello!", DateTime.Now);
+            user.Publish(post);
             var spy = new PostFormatterSpy();
             var oSpy = new OutputSpy();
             var command = new PrintPosts(spy, oSpy);
 
             command.Execute(user);
 
-            Assert.Equal(posts, spy.CalledWith);
+            Assert.Equal(new[] { post }, spy.CalledWith);
         }
 
         [Fact]
@@ -42,6 +37,30 @@ namespace Scl.Test.Commands
             command.Execute(user);
 
             Assert.Equal(new[] { "Hello, World!" }, spy.CalledWith);
+        }
+
+        [Fact]
+        public void PrintsInDescendingTimestampOrder()
+        {
+            var user = new User("Alice");
+            var posts = new[]
+            {
+                new Post(user, "Hello, world!", DateTime.MinValue),
+                new Post(user, "Bonjour la monde!", DateTime.MinValue.AddYears(1)),
+                new Post(user, "Sekai, konnichiwa!", DateTime.MinValue.AddYears(2))
+            };
+            user.Publish(posts[0]);
+            user.Publish(posts[1]);
+            user.Publish(posts[2]);
+
+            var spy = new OutputSpy();
+            var command = new PrintPosts(new PostFormatterDummy(p => p.Message), spy);
+
+            command.Execute(user);
+
+            Assert.Equal(
+                new[] { "Sekai, konnichiwa!", "Bonjour la monde!", "Hello, world!" },
+                spy.CalledWith);
         }
     }
 }

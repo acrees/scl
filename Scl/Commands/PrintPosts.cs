@@ -17,7 +17,8 @@ namespace Scl.Commands
 
         public void Execute(User user)
         {
-            user.Posts.Select(_formatter.Print)
+            user.Posts.OrderByDescending(p => p.Timestamp)
+                      .Select(_formatter.Print)
                       .ToList()
                       .ForEach(_output.PrintLine);
         }

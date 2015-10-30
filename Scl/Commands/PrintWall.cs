@@ -20,6 +20,7 @@ namespace Scl.Commands
         {
             user.Following
                 .SelectMany(u => u.Posts)
+                .OrderByDescending(p => p.Timestamp)
                 .Select(_formatter.Print)
                 .ToList()
                 .ForEach(_output.PrintLine);

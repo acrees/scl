@@ -9,16 +9,17 @@ namespace Scl.Test.Doubles
 {
     public class PostFormatterDummy : IPostFormatter
     {
-        public PostFormatterDummy(string output)
+        public PostFormatterDummy(string s) :this(_=>s) { }
+        public PostFormatterDummy(Func<Post, string> format)
         {
-            _output = output;
+            _format = format;
         }
 
         public string Print(Post post)
         {
-            return _output;
+            return _format(post);
         }
 
-        private string _output;
+        private Func<Post, string> _format;
     }
 }
