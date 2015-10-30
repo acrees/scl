@@ -14,8 +14,12 @@ namespace Scl.Test.Commands
         [Fact]
         public void CallsThePrintFormatterForEachPost()
         {
-            var posts = new List<Post> { new Post("Hello!"), new Post("World!") };
             var user = new User("Alice");
+            var posts = new List<Post>
+            {
+                new Post(user, "Hello!"),
+                new Post(user, "World!")
+            };
             user.Publish(posts[0]);
             user.Publish(posts[1]);
             var spy = new PostFormatterSpy();
@@ -31,7 +35,7 @@ namespace Scl.Test.Commands
         public void PrintsTheFormattedStrings()
         {
             var user = new User("Alice");
-            user.Publish(new Post(""));
+            user.Publish(new Post(user, ""));
             var spy = new OutputSpy();
             var command = new PrintPosts(new PostFormatterDummy("Hello, World!"), spy);
 

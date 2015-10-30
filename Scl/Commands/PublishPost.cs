@@ -11,7 +11,7 @@ namespace Scl.Commands
     {
         public void Execute(User user, string message)
         {
-            var post = new Post(message);
+            var post = new Post(user, message);
             user.Publish(post);
         }
     }

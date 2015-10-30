@@ -11,14 +11,15 @@ namespace Scl.Test.IO
     public class PostFormatterTest
     {
         [Fact]
-        public void PrintsPostsMessage()
+        public void PrintsPostsUsernameAndMessage()
         {
-            var post = new Post("Hello, World!");
+            var alice = new User("Alice");
+            var post = new Post(alice, "Hello, World!");
             var formatter = new PostFormatter();
 
             var output = formatter.Print(post);
 
-            Assert.Equal("Hello, World!", output);
+            Assert.Equal("Alice - Hello, World!", output);
         }
     }
 }

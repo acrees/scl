@@ -9,9 +9,11 @@ namespace Scl
     public class Post
     {
         public string Message { get; private set; }
+        public User User { get; private set; }
 
-        public Post(string message)
+        public Post(User user, string message)
         {
+            User = user;
             Message = message;
         }
 
@@ -19,13 +21,15 @@ namespace Scl
         {
             var otherPost = obj as Post;
             if (otherPost == null) return base.Equals(obj);
-            return otherPost.Message == Message;
+            return otherPost.Message == Message
+                && User == otherPost.User;
         }
 
         public override int GetHashCode()
         {
             var hash = 13;
             hash = (hash * 7) + Message.GetHashCode();
+            hash = (hash * 7) + User.GetHashCode();
             return hash;
         }
     }

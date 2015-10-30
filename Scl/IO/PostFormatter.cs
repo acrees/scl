@@ -11,7 +11,10 @@ namespace Scl.IO
     {
         public string Print(Post post)
         {
-            return post.Message;
+            return String.Format(
+                "{0} - {1}",
+                post.User.Name,
+                post.Message);
         }
     }
 }

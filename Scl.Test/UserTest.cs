@@ -13,7 +13,7 @@ namespace Scl.Test
         public void PublishingAPostAllowsItToBeRead()
         {
             var user = new User("Alice");
-            var post = new Post("Hello, World!");
+            var post = new Post(user, "Hello, World!");
 
             user.Publish(post);
 

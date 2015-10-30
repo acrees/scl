@@ -18,7 +18,7 @@ namespace Scl.Test.Commands
 
             command.Execute(user, "Hello, World!");
 
-            Assert.Equal(new[] { new Post("Hello, World!") }, user.Posts);
+            Assert.Equal(new[] { new Post(user, "Hello, World!") }, user.Posts);
         }
     }
 }
