@@ -61,8 +61,10 @@
   <ItemGroup>
     <Compile Include="CommandDispatcherTest.cs" />
     <Compile Include="Commands\CreateOrRetrieveUserByNameTest.cs" />
+    <Compile Include="Commands\FollowUserTest.cs" />
     <Compile Include="Commands\PrintPostsTest.cs" />
     <Compile Include="Commands\PublishPostTest.cs" />
+    <Compile Include="Doubles\FollowUserSpy.cs" />
     <Compile Include="Doubles\OutputSpy.cs" />
     <Compile Include="Doubles\PostFormatterDummy.cs" />
     <Compile Include="Doubles\PostFormatterSpy.cs" />

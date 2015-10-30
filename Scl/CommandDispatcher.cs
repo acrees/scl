@@ -12,11 +12,13 @@ namespace Scl
         public CommandDispatcher(
             ICreateOrRetrieveUserByName userRetriever,
             IPrintPosts print,
-            IPublishPost publish)
+            IPublishPost publish,
+            IFollowUser follow)
         {
             _getUser = userRetriever;
             _printPosts = print;
             _publish = publish;
+            _follow = follow;
         }
 
         public void Run(string[] input)
@@ -31,10 +33,16 @@ namespace Scl
                 var message = String.Join(" ", input.Skip(2));
                 _publish.Execute(user, message);
             }
+            else if (input[1] == "follows")
+            {
+                var userToFollow = _getUser.Execute(input[2]);
+                _follow.Execute(user, userToFollow);
+            }
         }
 
         private ICreateOrRetrieveUserByName _getUser;
         private IPrintPosts _printPosts;
         private IPublishPost _publish;
+        private IFollowUser _follow;
     }
 }

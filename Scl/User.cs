@@ -15,6 +15,11 @@ namespace Scl
             get { return _posts.AsEnumerable(); }
         }
 
+        public IEnumerable<User> Following
+        {
+            get { return _following.AsEnumerable(); }
+        }
+
         public User(string name)
         {
             Name = name;
@@ -25,6 +30,12 @@ namespace Scl
             _posts.Add(newPost);
         }
 
+        public void Follow(User userToFollow)
+        {
+            _following.Add(userToFollow);
+        }
+
         private List<Post> _posts = new List<Post>();
+        private List<User> _following = new List<User>();
     }
 }
